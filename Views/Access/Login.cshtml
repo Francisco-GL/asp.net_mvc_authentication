@@ -1,0 +1,46 @@
+﻿@model WebApplication2.Models.AppLogin;
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    <div>
+        <form asp-controller="Access" asp-action="Login" method="post">
+            <h1>Login</h1>
+            <div>
+                <label>Email</label>
+                <input type="email" placeholder="ejemplo@ejemplo.com" asp-for="Email"/>
+            </div>
+            <div>
+                <label>Password</label>
+                <input type="password" placeholder="Password" asp-for="Password"/>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" asp-for="KeepLoggedIn"/>
+                    Keep me logged In
+                </label>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-outline-success">Login</button>
+            </div>
+            @if (ViewData["ValidateMessage"] != null)
+            {
+                <br />
+                <br />
+                <div>
+                    <h4>@ViewData["ValidateMessage"]</h4>
+                </div>
+            }
+        </form>
+    </div>
+</body>
+</html>
