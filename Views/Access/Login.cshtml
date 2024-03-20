@@ -9,35 +9,39 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <title>Login</title>
 </head>
 <body>
-    <div>
-        <form asp-controller="Access" asp-action="Login" method="post">
-            <h1>Login</h1>
+    <div id="login-container">
+        <form asp-controller="Access" asp-action="Login" method="post" id="login-form">
+            <h1 class="text-center mb-2">Login</h1>
+            <hr />
             <div>
                 <label>Email</label>
-                <input type="email" placeholder="ejemplo@ejemplo.com" asp-for="Email"/>
+                <input type="email" class="form-control" style="width: 75%;" placeholder="ejemplo@ejemplo.com" asp-for="Email"/>
             </div>
             <div>
                 <label>Password</label>
-                <input type="password" placeholder="Password" asp-for="Password"/>
+                <input class="form-control" style="width: 75%;" type="password" placeholder="Password" asp-for="Password"/>
             </div>
-            <div>
+            <div class="d-flex justify-content-center">
                 <label>
                     <input type="checkbox" asp-for="KeepLoggedIn"/>
                     Keep me logged In
                 </label>
             </div>
+            <hr />
             <div>
-                <button type="submit" class="btn btn-outline-success">Login</button>
+                <button type="submit" class="btn btn-outline-success w-100">Login</button>
             </div>
             @if (ViewData["ValidateMessage"] != null)
             {
                 <br />
                 <br />
                 <div>
-                    <h4>@ViewData["ValidateMessage"]</h4>
+                    <label class="w-100 text-center text-danger border-danger border-bottom">@ViewData["ValidateMessage"]</label>
                 </div>
             }
         </form>

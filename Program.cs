@@ -1,3 +1,4 @@
+// Libreria necesaria para creacion de "key" en cookie
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace WebApplication2
@@ -11,12 +12,14 @@ namespace WebApplication2
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            // ----------- Implementacion del servicio de Authentication ----------------
             builder.Services.AddAuthentication(
                 CookieAuthenticationDefaults.AuthenticationScheme
             ).AddCookie(option => {
                 option.LoginPath = "/Access/Login";
                 option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
             });
+            // --------------------------------------------------------------------------
 
             var app = builder.Build();
 
@@ -33,14 +36,17 @@ namespace WebApplication2
 
             app.UseRouting();
 
-            // !IMPORTANTE!!!!!!!
+            // ------------ IMPORTANTE ------------
             app.UseAuthentication();
+            // ------------------------------------
 
             app.UseAuthorization();
 
+            // ------- Cambio de ruta por default a la vista de Login -------
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Access}/{action=Login}/{id?}");
+            // --------------------------------------------------------------
 
             app.Run();
         }

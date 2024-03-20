@@ -18,7 +18,7 @@ namespace WebApplication2.Controllers
             // Proceso para verificacion de si ya cuenta con sesion activa
             ClaimsPrincipal claimUser = HttpContext.User;
             if(claimUser.Identity.IsAuthenticated)
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home"); // Redireccion a la vista Home (VIEW, CONTROLLER)
             
             return View();
         }
@@ -45,7 +45,7 @@ namespace WebApplication2.Controllers
                 return RedirectToAction("Index", "Home");
 
             }
-            ViewData["ValidateMessage"] = "user not found!";
+            ViewData["ValidateMessage"] = "Email or Password incorrect!";
             return View();
         }
         // ----------------------------------------------------------------------------------------------------------------------------------------

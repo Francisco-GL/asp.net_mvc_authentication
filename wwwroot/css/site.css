@@ -1,5 +1,5 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
@@ -14,5 +14,30 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    background-color: darkgray;
+    height: 100vh;
+}
+
+#login-container {
+    border: 1px solid green;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#login-form {
+    background-color: lightgray;
+    margin: 2rem;
+    border: 2px solid darkblue;
+    padding: 1rem 2.5rem 2rem 2rem;
+    border-radius: 10px 10px 10px 0;
+    box-shadow: 8px 8px 8px 7px rgba(0, 0, 0, 0.2);
+}
+
+#login-form > div {
+    margin: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
